@@ -1,0 +1,23 @@
+.securePassword-empty {
+	background-color: white !important;
+	color: black !important;
+	background-image: none !important;
+}
+
+.securePassword-working {
+	background-color: yellow !important;
+	color: black !important;
+	background-image: none !important;
+}
+
+.securePassword-secure {
+	background-color: green !important;
+	color: black !important;
+	background-image: none !important;
+}
+
+.securePassword-unsecure {
+	background-color: red !important;
+	color: black !important;
+	background-image: none !important;
+}

@@ -1,0 +1,33 @@
+/* (c) Bogdan Ripa 2015 */
+{
+  "manifest_version": 2,
+
+  "name": "Secure Pass",
+  "description": "Safely check your passwords against unsafe passwords. The password fields will turn green if it's safe to use it, and red otherwise",
+  "version": "1.0",
+  "icons": {
+    "16": "icon16.png",
+     "48": "icon48.png",
+     "128": "icon128.png" 
+  },
+
+  "content_scripts": [
+    {
+      "matches": [
+        "http://*/*", 
+        "https://*/*"
+      ],
+      "css": ["styles.css"],
+      "js": ["script.js", "md5.js"]
+    }
+  ],
+
+  "permissions": [
+    "cookies",
+    "tabs",
+    "activeTab",
+    "http://*/*", 
+    "https://*/*"
+  ]
+
+}
