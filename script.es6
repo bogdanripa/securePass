@@ -2,13 +2,8 @@ class SecureInput {
   constructor(el) {
     this.el = el;
     this.el.securedInput = true;
-    this.id = el.id + "_" + this.name;
+    this.xmlhttp = new XMLHttpRequest();
     this.init();
-  	this.xmlhttp = new XMLHttpRequest();
-  }
-  
-  getId() {
-    return this.id;
   }
   
   init() {
@@ -16,36 +11,36 @@ class SecureInput {
   }
   
   passwordChanged() {
-  	this.el.classList.remove("securePassword-empty");
-  	this.el.classList.remove("securePassword-working");
-  	this.el.classList.remove("securePassword-secure");
-  	this.el.classList.remove("securePassword-unsecure");
+    this.el.classList.remove("securePassword-empty");
+    this.el.classList.remove("securePassword-working");
+    this.el.classList.remove("securePassword-secure");
+    this.el.classList.remove("securePassword-unsecure");
   
-  	if (this.el.value == '') {
-  		this.el.classList.add("securePassword-empty");
-  		return;
-  	}
-  	this.el.classList.add("securePassword-working");
-  	
-  	this.checkPassword();
+    if (this.el.value == '') {
+      this.el.classList.add("securePassword-empty");
+      return;
+    }
+    this.el.classList.add("securePassword-working");
+    
+    this.checkPassword();
   }
 
   checkPassword() {
-  	this.xmlhttp.onreadystatechange = this#readyStateChanged;
-  	this.xmlhttp.open("GET", window.document.location.protocol + "//www.google.com/search?q=" + md5(this.el.value), true);
-  	this.xmlhttp.send();
+    this.xmlhttp.onreadystatechange = this#readyStateChanged;
+    this.xmlhttp.open("GET", window.document.location.protocol + "//www.google.com/search?q=" + md5(this.el.value), true);
+    this.xmlhttp.send();
   }
 
   readyStateChanged() {
-  	if (this.xmlhttp.readyState==4 && this.xmlhttp.status==200) {
-  		if (this.xmlhttp.responseText.indexOf(" - did not match any documents.") != -1) {
-  			this.el.classList.remove("securePassword-working");
-  			this.el.classList.add("securePassword-secure");
-  		} else {
-  			this.el.classList.remove("securePassword-working");
-  			this.el.classList.add("securePassword-unsecure");
-  		}
-  	}
+    if (this.xmlhttp.readyState==4 && this.xmlhttp.status==200) {
+      if (this.xmlhttp.responseText.indexOf(" - did not match any documents.") != -1) {
+        this.el.classList.remove("securePassword-working");
+        this.el.classList.add("securePassword-secure");
+      } else {
+        this.el.classList.remove("securePassword-working");
+        this.el.classList.add("securePassword-unsecure");
+      }
+    }
   }
 }
 
@@ -59,10 +54,10 @@ class SecurePass {
     var inputs = window.document.getElementsByTagName('input');
 
     for (var i=0;i<inputs.length;i++) {
-    	var input = inputs[i];
-    	if (input.getAttribute('type') == 'password' && !input.securedInput) {
-      	this.els.push(new SecureInput(input));
-    	}
+      var input = inputs[i];
+      if (input.getAttribute('type') == 'password' && !input.securedInput) {
+        this.els.push(new SecureInput(input));
+      }
     }
   }
   

@@ -9,20 +9,11 @@ var SecureInput = (function () {
   function SecureInput(el) {
     this.el = el;
     this.el.securedInput = true;
-    this.id = el.id + "_" + this.name;
-    this.init();
     this.xmlhttp = new XMLHttpRequest();
+    this.init();
   }
 
   _prototypeProperties(SecureInput, null, {
-    getId: {
-      value: function getId() {
-        return this.id;
-      },
-      writable: true,
-      enumerable: true,
-      configurable: true
-    },
     init: {
       value: function init() {
         var _ref;

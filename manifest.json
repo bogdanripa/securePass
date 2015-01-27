@@ -4,7 +4,7 @@
 
   "name": "Secure Pass",
   "description": "Safely check your passwords against unsafe passwords. The password fields will turn green if it's safe to use it, and red otherwise",
-  "version": "1.0",
+  "version": "1.1",
   "icons": {
     "16": "icon16.png",
      "48": "icon48.png",
